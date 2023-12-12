@@ -54,6 +54,7 @@ class NetworkInterfaceModel(sa.Model):
     int_critical = sa.Column(sa.Boolean(), default=False)
     int_group = sa.Column(sa.Integer(), nullable=True)
     int_mtu = sa.Column(sa.Integer(), nullable=True)
+    int_dedicated = sa.Column(sa.Integer(), default=0)
 
 
 class NetworkInterfaceLinkAddressModel(sa.Model):
@@ -173,6 +174,7 @@ class InterfaceService(CRUDService):
         Str('lag_protocol'),
         List('lag_ports', items=[Str('lag_port')]),
         List('bridge_members', items=[Str('member')]),  # FIXME: Please document fields for HA Hardware
+        Int('dedicated', default=0),
         additional_attrs=True,
     )
 
@@ -255,6 +257,7 @@ class InterfaceService(CRUDService):
             'ipv6_auto': False,
             'description': '',
             'mtu': None,
+            'dedicated': 0,
         }
         if ha_hardware:
             iface.update({
@@ -274,6 +277,7 @@ class InterfaceService(CRUDService):
             'ipv6_auto': config['int_ipv6auto'],
             'description': config['int_name'],
             'mtu': config['int_mtu'],
+            'dedicated': config['int_dedicated'],
         })
 
         if ha_hardware:
@@ -1096,6 +1100,7 @@ class InterfaceService(CRUDService):
             'critical': data.get('failover_critical') or False,
             'group': data.get('failover_group'),
             'mtu': data.get('mtu') or None,
+            'dedicated': data.get('dedicated'),
         }
 
     async def __create_interface_datastore(self, data, attrs):
@@ -1207,6 +1212,7 @@ class InterfaceService(CRUDService):
             'interface_create',
             'interface_update',
             ('rm', {'name': 'type'}),
+            ('add', Int('dedicated')),
             ('attr', {'update': True}),
         )
     )
