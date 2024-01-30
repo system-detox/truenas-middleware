@@ -195,6 +195,7 @@ pytest_command = [
     '-m',
     'pytest'
 ] + callargs + [
+    "-m", "base",
     "-o", "junit_family=xunit2",
     '--timeout=300',
     "--junitxml",

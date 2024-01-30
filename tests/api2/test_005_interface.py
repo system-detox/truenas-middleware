@@ -9,6 +9,8 @@ import pytest
 from auto_config import ip, interface, ha
 from middlewared.test.integration.utils.client import client
 
+pytest.mark.base
+
 
 @pytest.fixture(scope='module')
 def ip_to_use():
