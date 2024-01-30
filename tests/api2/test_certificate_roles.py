@@ -5,6 +5,8 @@ from middlewared.client.client import ClientException, ValidationErrors
 from middlewared.service_exception import ValidationErrors as ValidationErrorsServiceException
 from middlewared.test.integration.assets.account import unprivileged_user_client
 
+pytestmark = pytest.mark.rbac
+
 
 def common_checks(method, role, valid_role, valid_role_exception=True, method_args=None, method_kwargs=None):
     method_args = method_args or []

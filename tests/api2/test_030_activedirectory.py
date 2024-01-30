@@ -28,10 +28,10 @@ else:
 try:
     from config import AD_DOMAIN, ADPASSWORD, ADUSERNAME, ADNameServer, AD_COMPUTER_OU
     AD_USER = fr"AD02\{ADUSERNAME.lower()}"
+    pytestmark = pytest.mark.ds
 except ImportError:
     Reason = 'ADNameServer AD_DOMAIN, ADPASSWORD, or/and ADUSERNAME are missing in config.py"'
     pytestmark = pytest.mark.skip(reason=Reason)
-
 
 SMB_NAME = "TestADShare"
 
