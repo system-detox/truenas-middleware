@@ -6,7 +6,7 @@ from middlewared.test.integration.utils import call
 # but the client running the tests isn't guaranteed to have
 # the middlewared application installed locally
 DEFAULT_ARC_MAX_FILE = '/var/run/middleware/default_arc_max'
-pytest.mark.base
+pytestmark = pytest.mark.base
 
 def test_sysctl_arc_max_is_set():
     """Middleware should have created this file and written a number

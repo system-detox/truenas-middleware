@@ -10,7 +10,7 @@ from auto_config import ip, sshKey, user, password
 from middlewared.test.integration.utils import call, fail
 from middlewared.test.integration.utils.client import client
 
-pytest.mark.base
+pytestmark = pytest.mark.base
 
 
 @pytest.fixture(scope='module')

@@ -10,7 +10,7 @@ from auto_config import ha, ip, pool_name
 from middlewared.test.integration.utils import fail
 from middlewared.test.integration.utils.client import client
 
-pytest.mark.base
+pytestmark = pytest.mark.base
 
 
 @pytest.fixture(scope='module')

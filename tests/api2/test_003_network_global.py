@@ -9,7 +9,7 @@ from pytest_dependency import depends
 from auto_config import ha, interface, hostname, domain, ip
 from middlewared.test.integration.utils.client import client
 
-pytest.mark.base
+pytestmark = pytest.mark.base
 
 
 @pytest.fixture(scope='module')
