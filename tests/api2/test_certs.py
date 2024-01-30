@@ -11,6 +11,7 @@ import textwrap
 import os
 apifolder = os.getcwd()
 sys.path.append(apifolder)
+pytestmark = pytest.mark.certs
 
 
 # We would like to test the following cases

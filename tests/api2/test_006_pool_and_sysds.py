@@ -10,6 +10,8 @@ from auto_config import ha, ip, pool_name
 from middlewared.test.integration.utils import fail
 from middlewared.test.integration.utils.client import client
 
+pytestmark = pytest.mark.base
+
 
 @pytest.fixture(scope='module')
 def ws_client():
