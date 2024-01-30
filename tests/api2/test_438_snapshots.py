@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import os
+import pytest
 import sys
 
 from middlewared.test.integration.assets.pool import dataset, snapshot

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import pytest
 import sys
 from pytest_dependency import depends
 

@@ -2,6 +2,7 @@
 import io
 import json
 import os
+import pytest
 import sys
 from unittest.mock import ANY
 

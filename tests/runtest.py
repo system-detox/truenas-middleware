@@ -67,6 +67,7 @@ option_list = [
     "isns_ip=",
     "pool=",
     "tests=",
+    "markers=",
 ]
 
 # look if all the argument are there.
