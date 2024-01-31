@@ -9,6 +9,7 @@ from middlewared.test.integration.assets.account import unprivileged_user_client
 
 try:
     from config import ADPASSWORD, ADUSERNAME
+    pytestmark = [pytest.mark.nfs, pytest.mark.rbac]
 except ImportError:
     Reason = 'ADPASSWORD, or/and ADUSERNAME are missing in config.py"'
     pytestmark = pytest.mark.skip(reason=Reason)

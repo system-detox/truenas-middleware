@@ -5,6 +5,8 @@ from middlewared.client import ClientException
 from middlewared.service_exception import ValidationErrors
 from middlewared.test.integration.assets.account import unprivileged_user_client
 
+pytestmark = pytest.mark.vm
+
 
 @pytest.mark.parametrize('method, expected_error', [
     ('vm.virtualization_details', False),

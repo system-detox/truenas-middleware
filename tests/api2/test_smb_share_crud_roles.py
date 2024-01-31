@@ -7,6 +7,8 @@ from middlewared.test.integration.assets.smb import smb_share
 from middlewared.test.integration.assets.pool import dataset
 from middlewared.test.integration.assets.account import unprivileged_user_client
 
+pytestmark = [pytest.mark.rbac, pytest.mark.smb]
+
 
 @pytest.fixture(scope="module")
 def ds():

@@ -7,6 +7,8 @@ from middlewared.test.integration.assets.iscsi import iscsi_extent, iscsi_target
 from middlewared.test.integration.assets.pool import dataset
 from middlewared.test.integration.assets.account import unprivileged_user_client
 
+pytestmark = [pytest.mark.iscsi, pytest.mark.rbac]
+
 
 @pytest.fixture(scope="module")
 def ds():

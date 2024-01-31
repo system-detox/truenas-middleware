@@ -6,6 +6,8 @@ from middlewared.client import ClientException
 from middlewared.test.integration.assets.iscsi import iscsi_auth
 from middlewared.test.integration.assets.account import unprivileged_user_client
 
+pytestmark = [pytest.mark.iscsi, pytest.mark.rbac]
+
 
 @pytest.fixture(scope="module")
 def auth():
