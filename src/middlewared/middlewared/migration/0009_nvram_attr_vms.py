@@ -25,16 +25,16 @@ def migrate(middleware):
     default_ds_to_use = existing_root_datasets[0] if existing_root_datasets else None
     for vm in middleware.call_sync('vm.query', [['bootloader', '=', 'UEFI'], ['nvram_location', '=', None]]):
         try:
-            migrate_vm_nvram_file(middleware, existing_nvram_files, vm, default_ds_to_use)
+            migrate_vm_nvram_file(middleware, existing_nvram_files, vm, default_ds_to_use, existing_root_datasets)
         except Exception:
             middleware.logger.error('Failed to migrate nvram file for VM %r(%r)', vm['name'], vm['id'], exc_info=True)
 
 
-def migrate_vm_nvram_file(middleware, existing_nvram_files, vm, default_ds_to_use):
+def migrate_vm_nvram_file(middleware, existing_nvram_files, vm, default_ds_to_use, existing_root_datasets):
     file_name = f'{vm["id"]}_{vm["name"]}_VARS.fd'
     root_ds_to_use = default_ds_to_use
     for disk_device in middleware.call_sync('vm.device.query', [['vm', '=', vm['id']], ['dtype', '=', 'DISK']]):
-        if root_ds := get_root_ds_from_disk_device(disk_device):
+        if (root_ds := get_root_ds_from_disk_device(disk_device)) and root_ds in existing_root_datasets:
             root_ds_to_use = root_ds
             break
 
